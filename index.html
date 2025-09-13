@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pullangari Vedaprakash - E-Portfolio</title>
     <style>
-        /* Google fonts & font family
+       /* Google fonts & font family
 ==================================================*/
 
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,400i,700,700i,900,900i');
@@ -208,24 +208,26 @@ nav li a.active {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
-    gap: 30px;
+    gap: 20px;
     justify-content: center;
 }
 
-.Skills .container-skill .mainSkill .front, .back {
+.Skills .container-skill .mainSkill .front,
+.Skills .container-skill .mainSkill .back {
     width: 100%;
     max-width: 500px;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 16px;
-    padding: 18px 36px;
+    padding: 15px 20px; /* Reduced padding for mobile */
 }
 
-.Skills .container-skill .mainSkill .front h2, .back h2 {
+.Skills .container-skill .mainSkill .front h2,
+.Skills .container-skill .mainSkill .back h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin: 0 0 20px 0;
-    font-size: 24px;
+    margin: 0 0 15px 0; /* Reduced margin */
+    font-size: 20px; /* Smaller font for mobile */
     font-weight: 600;
     color: #333;
     text-align: center;
@@ -235,22 +237,26 @@ nav li a.active {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px; /* Reduced gap for mobile */
+    margin-bottom: 15px; /* Reduced margin */
 }
 
-.Skills .container-skill .mainSkill .front .frontSkill, .back .backSkill {
-    font-size: 14px;
+.Skills .container-skill .mainSkill .front .frontSkill,
+.Skills .container-skill .mainSkill .back .backSkill {
+    font-size: 12px; /* Smaller font for mobile */
     font-weight: 400;
     color: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 12px 16px;
+    border-radius: 10px;
+    padding: 8px 12px; /* Reduced padding */
     transition: all 0.3s ease;
+    white-space: normal; /* Prevent overflow */
+    word-break: break-word; /* Allow text to break */
 }
 
-.Skills .container-skill .mainSkill .front .frontSkill:hover, .back .backSkill:hover {
-    transform: translateY(-7px);
+.Skills .container-skill .mainSkill .front .frontSkill:hover,
+.Skills .container-skill .mainSkill .back .backSkill:hover {
+    transform: translateY(-5px); /* Reduced hover lift */
     background: #425BB5;
     color: #fff;
     border-color: #425BB5;
@@ -389,8 +395,25 @@ nav li a.active {
     }
     
     .Skills .container-skill .mainSkill {
-        flex-direction: column;
+        flex-direction: column; /* Stack front and back vertically */
         align-items: center;
+    }
+    
+    .Skills .container-skill .mainSkill .front,
+    .Skills .container-skill .mainSkill .back {
+        max-width: 100%; /* Full width on mobile */
+        padding: 10px; /* Further reduced padding */
+    }
+    
+    .Skills .container-skill .mainSkill .front h2,
+    .Skills .container-skill .mainSkill .back h2 {
+        font-size: 18px; /* Smaller header */
+    }
+    
+    .Skills .container-skill .mainSkill .front .frontSkill,
+    .Skills .container-skill .mainSkill .back .backSkill {
+        font-size: 10px; /* Even smaller text */
+        padding: 6px 10px; /* Reduced padding */
     }
 }
 
@@ -406,6 +429,14 @@ nav li a.active {
     
     .experience-row {
         padding: 15px;
+    }
+    
+    .content-wrapper {
+        padding: 0 10px; /* Adjust padding for small screens */
+    }
+    
+    .Skills .container-skill .mainSkill .box {
+        gap: 5px; /* Tighter spacing */
     }
 }
    </style>
