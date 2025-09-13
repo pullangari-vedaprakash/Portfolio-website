@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pullangari Vedaprakash - E-Portfolio</title>
     <style>
-       /* Google fonts & font family
+  /* Google fonts & font family
 ==================================================*/
 
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,400i,700,700i,900,900i');
@@ -201,15 +201,18 @@ nav li a.active {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden; /* Prevent any container overflow */
 }
 
 .Skills .container-skill .mainSkill {
     width: 100%;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
     gap: 20px;
     justify-content: center;
+    overflow-wrap: break-word; /* Allow breaking in container */
 }
 
 .Skills .container-skill .mainSkill .front,
@@ -219,15 +222,17 @@ nav li a.active {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 16px;
-    padding: 15px 20px; /* Reduced padding for mobile */
+    padding: 15px 20px;
+    box-sizing: border-box; /* Include padding/border in width */
+    overflow: hidden; /* Clip any child overflow */
 }
 
 .Skills .container-skill .mainSkill .front h2,
 .Skills .container-skill .mainSkill .back h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin: 0 0 15px 0; /* Reduced margin */
-    font-size: 20px; /* Smaller font for mobile */
+    margin: 0 0 15px 0;
+    font-size: 20px;
     font-weight: 600;
     color: #333;
     text-align: center;
@@ -235,28 +240,35 @@ nav li a.active {
 
 .Skills .container-skill .mainSkill .box {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Align left for better wrapping */
     flex-wrap: wrap;
-    gap: 10px; /* Reduced gap for mobile */
-    margin-bottom: 15px; /* Reduced margin */
+    gap: 8px; /* Balanced gap */
+    margin-bottom: 15px;
+    width: 100%; /* Full width to control wrapping */
 }
 
 .Skills .container-skill .mainSkill .front .frontSkill,
 .Skills .container-skill .mainSkill .back .backSkill {
-    font-size: 12px; /* Smaller font for mobile */
+    font-size: 12px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    padding: 8px 12px; /* Reduced padding */
+    padding: 8px 12px;
+    box-sizing: border-box; /* Key: Include padding in width calc */
+    flex: 1 1 auto; /* Allow shrinking and growing */
+    min-width: 0; /* Allow flex items to shrink below content size */
+    white-space: normal; /* Allow wrapping */
+    word-wrap: break-word; /* Break long words */
+    overflow-wrap: break-word;
+    hyphens: auto; /* Add hyphens for better breaks */
     transition: all 0.3s ease;
-    white-space: normal; /* Prevent overflow */
-    word-break: break-word; /* Allow text to break */
+    max-width: 100%; /* Prevent exceeding parent */
 }
 
 .Skills .container-skill .mainSkill .front .frontSkill:hover,
 .Skills .container-skill .mainSkill .back .backSkill:hover {
-    transform: translateY(-5px); /* Reduced hover lift */
+    transform: translateY(-5px);
     background: #425BB5;
     color: #fff;
     border-color: #425BB5;
@@ -397,23 +409,41 @@ nav li a.active {
     .Skills .container-skill .mainSkill {
         flex-direction: column; /* Stack front and back vertically */
         align-items: center;
+        gap: 15px;
     }
     
     .Skills .container-skill .mainSkill .front,
     .Skills .container-skill .mainSkill .back {
         max-width: 100%; /* Full width on mobile */
-        padding: 10px; /* Further reduced padding */
+        width: 100%;
+        padding: 10px 8px; /* Even smaller padding */
+        box-sizing: border-box;
     }
     
     .Skills .container-skill .mainSkill .front h2,
     .Skills .container-skill .mainSkill .back h2 {
-        font-size: 18px; /* Smaller header */
+        font-size: 16px; /* Smaller header */
+        margin-bottom: 10px;
+    }
+    
+    .Skills .container-skill .mainSkill .box {
+        gap: 5px; /* Tighter gap */
+        justify-content: flex-start;
     }
     
     .Skills .container-skill .mainSkill .front .frontSkill,
     .Skills .container-skill .mainSkill .back .backSkill {
-        font-size: 10px; /* Even smaller text */
-        padding: 6px 10px; /* Reduced padding */
+        font-size: 10px; /* Smaller text */
+        padding: 6px 8px; /* Reduced padding */
+        flex: 1 1 45%; /* Allow 2 per row if possible, but shrink */
+        min-width: 0;
+        max-width: calc(50% - 5px); /* Cap at half width minus gap */
+    }
+    
+    /* Disable hover on mobile to avoid transform overflow */
+    .Skills .container-skill .mainSkill .front .frontSkill:hover,
+    .Skills .container-skill .mainSkill .back .backSkill:hover {
+        transform: none; /* No lift on touch */
     }
 }
 
@@ -432,11 +462,32 @@ nav li a.active {
     }
     
     .content-wrapper {
-        padding: 0 10px; /* Adjust padding for small screens */
+        padding: 0 10px;
+    }
+    
+    .Skills .container-skill .mainSkill .front,
+    .Skills .container-skill .mainSkill .back {
+        padding: 8px 6px; /* Ultra-tight for tiny screens */
+    }
+    
+    .Skills .container-skill .mainSkill .front h2,
+    .Skills .container-skill .mainSkill .back h2 {
+        font-size: 14px;
+    }
+    
+    .Skills .container-skill .mainSkill .front .frontSkill,
+    .Skills .container-skill .mainSkill .back .backSkill {
+        font-size: 9px; /* Tiny text for very small screens */
+        padding: 4px 6px;
+        flex: 1 1 100%; /* Stack all in one column if needed */
+        max-width: 100%; /* Full width, one per line */
+        margin-bottom: 4px; /* Add small margin for stacking */
     }
     
     .Skills .container-skill .mainSkill .box {
-        gap: 5px; /* Tighter spacing */
+        gap: 3px;
+        flex-direction: column; /* Force column on tiniest screens */
+        align-items: stretch;
     }
 }
    </style>
@@ -612,6 +663,7 @@ nav li a.active {
             <h4>Contact / Links</h4>
             <div class="contact-grid">
                 <div class="contact-info">
+                    <p>Phone Number: +91-8341036769</p>
                     <p>Email: p.vedaprakashreddy@gmail.com</p>
                     <p>LinkedIn: <a href="https://www.linkedin.com/in/vedaprakash-reddy-605290291">Profile</a></p>
                     <p>GitHub: <a href="https://github.com/pullangari-vedaprakash">Profile</a></p>
