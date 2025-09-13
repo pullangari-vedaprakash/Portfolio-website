@@ -4,343 +4,602 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pullangari Vedaprakash - E-Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            scroll-behavior: smooth;
-            background-color: #1f2937;
-        }
-        .section {
-            padding: 1.5rem 1rem;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-        .section:nth-child(2) { animation-delay: 0.1s; }
-        .section:nth-child(3) { animation-delay: 0.2s; }
-        .section:nth-child(4) { animation-delay: 0.3s; }
-        .section:nth-child(5) { animation-delay: 0.4s; }
-        .section:nth-child(6) { animation-delay: 0.5s; }
-        .section:nth-child(7) { animation-delay: 0.6s; }
-        .section:nth-child(8) { animation-delay: 0.7s; }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .nav-link {
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .nav-link:hover {
-            color: #22d3ee;
-            transform: scale(1.1);
-        }
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-        }
-        .btn {
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #0891b2;
-            transform: scale(1.05);
-        }
-        input:focus, textarea:focus {
-            border-color: #22d3ee;
-            box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.3);
-            transition: all 0.3s ease;
-        }
-        .progress-bar {
-            height: 6px;
-            background-color: #22d3ee;
-            transition: width 1.2s ease-in-out;
-            border-radius: 3px;
-        }
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x1080?text=Tech+Background') no-repeat center center/cover;
-            padding: 4rem 1rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-        .table-container {
-            overflow-x: auto;
-        }
-        .cert-card {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-        }
-        .ach-card {
-            background: linear-gradient(135deg, #059669, #10b981);
-        }
-        .download-btn {
-            background: #10b981;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-        }
-        .download-btn:hover {
-            background: #059669;
-        }
-        .social-link {
-            transition: color 0.3s ease;
-        }
-        .social-link:hover {
-            color: #22d3ee;
-        }
-    </style>
+        /* Google fonts & font family
+==================================================*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,400i,700,700i,900,900i');
+
+/* Typography
+==================================================*/
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    line-height: 70px;
+    text-align: center;
+    color: #333;
+    margin: 0;
+}
+
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    color: #425BB5;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    position: relative;
+    color: #425BB5;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h4:before {
+    position: absolute;
+    width: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    display: block;
+    height: 2px;
+    background: #425BB5;
+    bottom: -10px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Header & Nav
+==================================================*/
+
+header {
+    text-align: center;
+    transition: all .5s;
+    height: 65px;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    display: inline-block;
+    padding-left: 0;
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav li a {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #444;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav li a:hover,
+nav li a.active {
+    color: #425BB5;
+}
+
+/* Home Section
+==================================================*/
+
+#home {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-cell {
+    text-align: center;
+    padding: 20px;
+}
+
+.disply-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/* General Sections
+==================================================*/
+
+#personal, #contact {
+    padding: 80px 20px;
+    background: #fff;
+}
+
+#education, #skills, #projects, #achievements, #extracurricular, #resume {
+    padding: 80px 20px;
+    background: #f8f9fa;
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.experience-row {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    transition: box-shadow 0.3s;
+}
+
+.experience-row:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.experience-row h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.experience-row ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.experience-row a {
+    color: #425BB5;
+    text-decoration: none;
+}
+
+.experience-row a:hover {
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Skills Section
+==================================================*/
+
+.Skills {
+    display: block;
+    width: 100%;
+}
+
+.Skills .container-skill {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Skills .container-skill .mainSkill {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 30px;
+    justify-content: center;
+}
+
+.Skills .container-skill .mainSkill .front, .back {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    padding: 18px 36px;
+}
+
+.Skills .container-skill .mainSkill .front h2, .back h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.Skills .container-skill .mainSkill .box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.Skills .container-skill .mainSkill .front .frontSkill, .back .backSkill {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.Skills .container-skill .mainSkill .front .frontSkill:hover, .back .backSkill:hover {
+    transform: translateY(-7px);
+    background: #425BB5;
+    color: #fff;
+    border-color: #425BB5;
+}
+
+/* Contact Section
+==================================================*/
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.contact-form button {
+    padding: 10px;
+    background: #425BB5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: #324b9e;
+}
+
+/* Resume Buttons
+==================================================*/
+
+#herobtn {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.resumediv {
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    border: 1px solid #425BB5;
+    line-height: 40px;
+}
+
+.resumediv a {
+    color: #425BB5;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+
+.resumediv::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #425BB5;
+    transition: width 0.4s ease;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.resumediv:hover::before {
+    width: 100%;
+}
+
+.resumediv:hover a {
+    color: #fff;
+}
+
+/* Responsive
+==================================================*/
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    
+    #home, .disply-table {
+        height: 80vh;
+        text-align: center;
+    }
+    
+    nav li {
+        margin: 0 10px;
+    }
+    
+    .table-cell {
+        padding: 10px;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    #herobtn {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .resumediv {
+        width: 120px;
+    }
+    
+    .Skills .container-skill .mainSkill {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 40px;
+    }
+    
+    nav li a {
+        font-size: 9px;
+        margin: 0 5px;
+    }
+    
+    .experience-row {
+        padding: 15px;
+    }
+}
+   </style>
 </head>
-<body class="font-sans text-gray-300">
-    <!-- Hero Header -->
-    <section class="hero">
-        <div class="container mx-auto px-4">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4">Pullangari Vedaprakash</h1>
-            <p class="text-xl md:text-2xl mb-4">B.Tech in Computer Science Engineering<br>IIIT Sricity</p>
-            <div class="space-y-2 text-base md:text-lg mb-4">
-                <p>+91-8341036769 | p.vedaprakashreddy@gmail.com</p>
-                <p><a href="https://github.com/pullangari-vedaprakash" class="text-cyan-300 hover:text-white social-link">GitHub: pullangari-vedaprakash</a></p>
-            </div>
-            <a href="veda_resume.pdf" download class="download-btn" title="Download Resume" onclick="return checkResumeLink()">📄 Download Resume</a>
-        </div>
-    </section>
+<body>
 
-    <!-- Navigation -->
-    <nav class="bg-blue-900 text-white p-3 sticky top-0 z-10 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-lg font-bold">Vedaprakash's Portfolio</h1>
-            <div class="space-x-3 text-xs md:text-sm hidden md:block">
-                <a href="#personal" class="nav-link">About</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#experience" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <button class="md:hidden bg-cyan-500 px-3 py-1 rounded text-xs">Menu</button>
-        </div>
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Personal Information -->
-    <section id="personal" class="section bg-gray-900">
-        <div class="container mx-auto text-center">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">About Me</h2>
-            <p class="text-base font-semibold text-white">Pullangari Vedaprakash</p>
-            <p class="text-gray-400 text-xs">B.Tech CSE Student | Machine Learning Enthusiast | IIIT Sricity</p>
-            <p class="mt-1 max-w-xl mx-auto text-gray-300 text-xs">Passionate about AI and data science, with experience in NLP projects like spam detection and hate speech classification. Eager to innovate in tech.</p>
-        </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section bg-gray-800">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">Education</h2>
-            <div class="table-container">
-                <table class="w-full bg-gray-900 rounded-lg overflow-hidden border border-gray-700">
-                    <thead class="bg-blue-900">
-                        <tr>
-                            <th class="p-2 text-left text-white text-xs">Degree/Certificate</th>
-                            <th class="p-2 text-left text-white text-xs">Institute/Board</th>
-                            <th class="p-2 text-left text-white text-xs">CGPA/Percentage</th>
-                            <th class="p-2 text-left text-white text-xs">Year</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-700">
-                        <tr class="hover:bg-gray-700 card">
-                            <td class="p-2 text-xs font-medium">B.Tech., CSE</td>
-                            <td class="p-2 text-xs">Indian Institute of Information Technology, SRICITY</td>
-                            <td class="p-2 text-xs">9.00 CGPA (until semester 3)</td>
-                            <td class="p-2 text-xs">[2027]</td>
-                        </tr>
-                        <tr class="hover:bg-gray-700 card">
-                            <td class="p-2 text-xs font-medium">Senior Secondary</td>
-                            <td class="p-2 text-xs">Sri Chaitanya Junior College</td>
-                            <td class="p-2 text-xs">978/1000 (97.8%)</td>
-                            <td class="p-2 text-xs">[May 2023]</td>
-                        </tr>
-                        <tr class="hover:bg-gray-700 card">
-                            <td class="p-2 text-xs font-medium">Secondary</td>
-                            <td class="p-2 text-xs">Mount Basil High School</td>
-                            <td class="p-2 text-xs">415/500 (83%)</td>
-                            <td class="p-2 text-xs">[2021]</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <section id="home" class="disply-table">
+        <div class="table-cell" itemscope itemtype="http://schema.org/Person">
+            <h1 itemprop="name">Pullangari Vedaprakash</h1>
+            <h4 itemprop="jobTitle">B.Tech in Computer Science Engineering</h4>
+            <div id="herobtn">
+                <div class="resumediv">
+                    <a href="veda_resume.pdf" download>View Resume</a>
+                </div>
+                <div class="resumediv" id="githubdiv">
+                    <a href="https://github.com/pullangari-vedaprakash" target="_blank">GitHub</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="section bg-gray-900">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div>
-                    <h3 class="text-lg font-semibold mb-1 text-white">Technical Skills</h3>
-                    <div class="space-y-1">
-                        <div>
-                            <p class="font-medium text-xs">Programming Languages: C, Java, Python, MySQL</p>
-                            <div class="bg-gray-700 h-1.5 rounded"><div class="progress-bar w-85"></div></div>
+    <section id="personal">
+        <div class="content-wrapper">
+            <h4>Personal Information</h4>
+            <div class="text-center">
+                <p>B.Tech CSE Student | Machine Learning Enthusiast | IIIT Sricity</p>
+                <p>Passionate about AI and data science, with experience in NLP projects like spam detection and hate speech classification. Eager to innovate in tech.</p>
+                <p>Email: p.vedaprakashreddy@gmail.com | Phone: +91-8341036769</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="content-wrapper">
+            <h4>Education</h4>
+            <div class="experience-list">
+                <div class="experience-row">
+                    <h3>B.Tech., CSE</h3>
+                    <p>Indian Institute of Information Technology, SRICITY</p>
+                    <p>CGPA: 9.00 (until semester 3)</p>
+                    <p>[2027]</p>
+                </div>
+                <div class="experience-row">
+                    <h3>Senior Secondary</h3>
+                    <p>Sri Chaitanya Junior College</p>
+                    <p>978/1000 (97.8%)</p>
+                    <p>[May 2023]</p>
+                </div>
+                <div class="experience-row">
+                    <h3>Secondary</h3>
+                    <p>Mount Basil High School</p>
+                    <p>415/500 (83%)</p>
+                    <p>[2021]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="content-wrapper">
+            <h4>Skills</h4>
+            <div class="Skills">
+                <div class="container-skill">
+                    <div class="mainSkill">
+                        <div class="front">
+                            <h2>Technical Skills</h2>
+                            <div class="box">
+                                <div class="frontSkill">Programming Languages: C, Java, Python, MySQL</div>
+                                <div class="frontSkill">Web Technologies: HTML, CSS, JavaScript</div>
+                                <div class="frontSkill">Data Analysis: Pandas, NumPy, Matplotlib</div>
+                                <div class="frontSkill">Machine Learning: Scikit-learn</div>
+                                <div class="frontSkill">Tools & Platforms: Git, Jupyter Notebook, VS Code</div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-medium text-xs">Web Technologies: HTML, CSS, JavaScript</p>
-                            <div class="bg-gray-700 h-1.5 rounded"><div class="progress-bar w-75"></div></div>
-                        </div>
-                        <div>
-                            <p class="font-medium text-xs">Data Analysis: Pandas, NumPy, Matplotlib</p>
-                            <div class="bg-gray-700 h-1.5 rounded"><div class="progress-bar w-80"></div></div>
-                        </div>
-                        <div>
-                            <p class="font-medium text-xs">Machine Learning: Scikit-learn</p>
-                            <div class="bg-gray-700 h-1.5 rounded"><div class="progress-bar w-70"></div></div>
-                        </div>
-                        <div>
-                            <p class="font-medium text-xs">Tools & Platforms: Git, Jupyter Notebook, VS Code</p>
-                            <div class="bg-gray-700 h-1.5 rounded"><div class="progress-bar w-85"></div></div>
+                        <div class="back">
+                            <h2>Soft Skills</h2>
+                            <div class="box">
+                                <div class="backSkill">Problem-solving</div>
+                                <div class="backSkill">Team collaboration</div>
+                                <div class="backSkill">Time management</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-1 text-white">Soft Skills</h3>
-                    <ul class="space-y-0.5 text-gray-300 text-xs">
-                        <li class="flex items-center"><span class="w-1 h-1 bg-cyan-400 rounded-full mr-1"></span>Problem-solving</li>
-                        <li class="flex items-center"><span class="w-1 h-1 bg-cyan-400 rounded-full mr-1"></span>Team collaboration</li>
-                        <li class="flex items-center"><span class="w-1 h-1 bg-cyan-400 rounded-full mr-1"></span>Time management</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects -->
-    <section id="experience" class="section bg-gray-800">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">Projects</h2>
-            <div class="space-y-3">
-                <div class="bg-gray-900 p-3 rounded-lg shadow-md card">
-                    <h3 class="text-lg font-semibold text-white mb-1">SMS Spam Detection</h3>
-                    <p class="text-gray-400 mb-1 text-xs">Tools: Python, NLTK, Scikit-learn, Pandas, NumPy</p>
-                    <ul class="list-disc pl-4 space-y-0.5 text-gray-300 text-xs">
+    <section id="projects">
+        <div class="content-wrapper">
+            <h4>Work Experience / Projects</h4>
+            <div class="experience-list">
+                <div class="experience-row">
+                    <h3>SMS Spam Detection</h3>
+                    <p>Tools: Python, NLTK, Scikit-learn, Pandas, NumPy</p>
+                    <ul>
                         <li>Developed a spam classification system using TF-IDF vectorization.</li>
                         <li>Implemented Naïve Bayes (94%) and Decision Tree (98%) models.</li>
                     </ul>
-                    <a href="https://github.com/pullangari-vedaprakash/SMS-Spam-Detection" class="btn bg-blue-600 text-white px-3 py-1 rounded mt-1 inline-block text-xs">View on GitHub</a>
+                    <a href="https://github.com/pullangari-vedaprakash/SMS-Spam-Detection">View on GitHub</a>
                 </div>
-                <div class="bg-gray-900 p-3 rounded-lg shadow-md card">
-                    <h3 class="text-lg font-semibold text-white mb-1">Hate Speech Detection</h3>
-                    <p class="text-gray-400 mb-1 text-xs">Tools: Python, Pandas, NLTK, Scikit-learn</p>
-                    <ul class="list-disc pl-4 space-y-0.5 text-gray-300 text-xs">
+                <div class="experience-row">
+                    <h3>Hate Speech Detection</h3>
+                    <p>Tools: Python, Pandas, NLTK, Scikit-learn</p>
+                    <ul>
                         <li>Processed 24K+ tweets with cleaning and stemming.</li>
                         <li>Built a Decision Tree model (87.3% accuracy).</li>
                     </ul>
-                    <a href="https://github.com/pullangari-vedaprakash/Hate-Speech-Detection" class="btn bg-blue-600 text-white px-3 py-1 rounded mt-1 inline-block text-xs">View on GitHub</a>
+                    <a href="https://github.com/pullangari-vedaprakash/Hate-Speech-Detection">View on GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications -->
-    <section id="certifications" class="section bg-gray-900">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-                <div class="cert-card p-3 rounded-lg shadow-md card text-white">
-                    <h3 class="text-base font-semibold mb-0.5">Corizo - Artificial Intelligence</h3>
-                    <a href="https://cert.diceid.com/cid/uOhklgOygW" class="text-blue-100 hover:text-white underline text-xs">View</a>
+    <section id="achievements">
+        <div class="content-wrapper">
+            <h4>Achievements & Awards</h4>
+            <div class="experience-list">
+                <div class="experience-row">
+                    <h3>Smart Mobility Hackathon - Finalist</h3>
+                    <p>Innovative mobility solutions.</p>
                 </div>
-                <div class="cert-card p-3 rounded-lg shadow-md card text-white">
-                    <h3 class="text-base font-semibold mb-0.5">1Stop - Internship Program in Data Science</h3>
-                    <a href="https://cert.diceid.com/cid/zHmrfNTV5m" class="text-blue-100 hover:text-white underline text-xs">View</a>
+                <div class="experience-row">
+                    <h3>Smart India Hackathon - Participant</h3>
+                    <p>National-level problem-solving.</p>
                 </div>
-                <div class="cert-card p-3 rounded-lg shadow-md card text-white">
-                    <h3 class="text-base font-semibold mb-0.5">1Stop - Project Completion Certification</h3>
-                    <a href="https://drive.google.com/file/d/1szKFRM5obBYm5zg6fyzr30DVuniF39Wo/view?usp=drivesdk" class="text-blue-100 hover:text-white underline text-xs">View</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements -->
-    <section id="achievements" class="section bg-gray-800">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">Achievements</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div class="ach-card p-3 rounded-lg shadow-md card text-white">
-                    <h3 class="text-base font-semibold mb-0.5">Smart Mobility Hackathon - Finalist</h3>
-                    <p class="text-xs">Innovative mobility solutions.</p>
-                    <a href="#" class="text-green-100 hover:text-white underline text-xs mt-0.5">Details</a>
-                </div>
-                <div class="ach-card p-3 rounded-lg shadow-md card text-white">
-                    <h3 class="text-base font-semibold mb-0.5">Smart India Hackathon - Participant</h3>
-                    <p class="text-xs">National-level problem-solving.</p>
-                    <a href="#" class="text-green-100 hover:text-white underline text-xs mt-0.5">Details</a>
+                <div class="experience-row">
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li>Corizo - Artificial Intelligence: <a href="https://cert.diceid.com/cid/uOhklgOygW">View</a></li>
+                        <li>1Stop - Internship Program in Data Science: <a href="https://cert.diceid.com/cid/zHmrfNTV5m">View</a></li>
+                        <li>1Stop - Project Completion Certification: <a href="https://drive.google.com/file/d/1szKFRM5obBYm5zg6fyzr30DVuniF39Wo/view?usp=drivesdk">View</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Positions of Responsibility -->
-    <section id="extracurricular" class="section bg-gray-900">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">Positions of Responsibility</h2>
-            <div class="bg-gray-800 p-3 rounded-lg shadow-md">
-                <h3 class="text-lg font-semibold text-white mb-0.5">Wing Member, IoT/Data Science Wing, IIITS</h3>
-                <p class="text-gray-300 text-xs">2024 - Organized events and workshops.</p>
+    <section id="extracurricular">
+        <div class="content-wrapper">
+            <h4>Extracurricular & Volunteering</h4>
+            <div class="experience-list">
+                <div class="experience-row">
+                    <h3>Wing Member, IoT/Data Science Wing, IIITS</h3>
+                    <p>2024 - Organized events and workshops.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section bg-gray-800">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-cyan-400">Contact</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div class="space-y-1">
-                    <div>
-                        <p class="text-white font-medium text-xs">Email</p>
-                        <p class="text-gray-300 text-xs">p.vedaprakashreddy@gmail.com</p>
-                        <p class="text-gray-300 text-xs">vedaprakash.p23@iiits.in</p>
-                    </div>
-                    <div>
-                        <p class="text-white font-medium text-xs">Phone</p>
-                        <p class="text-gray-300 text-xs">+91-8341036769</p>
-                    </div>
-                    <div>
-                        <p class="text-white font-medium text-xs">LinkedIn</p>
-                        <p class="text-gray-300 text-xs"><a href="https://www.linkedin.com/in/vedaprakash-reddy-605290291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" target="_blank">linkedin.com/in/vedaprakash-reddy-605290291</a></p>
-                    </div>
-                    <div class="flex space-x-1">
-                        <a href="https://github.com/pullangari-vedaprakash" class="text-base text-gray-400 hover:text-cyan-400 social-link" target="_blank">🐙 GitHub</a>
-                    </div>
+    <section id="resume">
+        <div class="content-wrapper">
+            <h4>Resume & References</h4>
+            <div class="text-center">
+                <p><a href="veda_resume.pdf" download>Download Resume</a></p>
+                <p>References available upon request.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="content-wrapper">
+            <h4>Contact / Links</h4>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>Phone Number: +91-8341036769</p>
+                    <p>Email: p.vedaprakashreddy@gmail.com</p>
+                    <p>LinkedIn: <a href="https://www.linkedin.com/in/vedaprakash-reddy-605290291">Profile</a></p>
+                    <p>GitHub: <a href="https://github.com/pullangari-vedaprakash">Profile</a></p>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-1 text-white">Send a Message</h3>
-                    <form class="space-y-1">
-                        <input type="text" placeholder="Your Name" class="w-full p-1.5 rounded bg-gray-700 border border-gray-600 text-gray-300 text-xs focus:outline-none focus:border-cyan-500">
-                        <input type="email" placeholder="Your Email" class="w-full p-1.5 rounded bg-gray-700 border border-gray-600 text-gray-300 text-xs focus:outline-none focus:border-cyan-500">
-                        <textarea placeholder="Your Message" class="w-full p-1.5 rounded bg-gray-700 border border-gray-600 text-gray-300 text-xs focus:outline-none focus:border-cyan-500" rows="2"></textarea>
-                        <button type="submit" class="btn bg-cyan-500 text-white p-1.5 rounded w-full text-xs">Send Message</button>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit">Send</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white p-1 text-center">
-        <p class="text-xs">&copy; 2025 Pullangari Vedaprakash. All rights reserved.</p>
-    </footer>
-
     <script>
-        // Smooth scrolling
+        // Simple smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -349,22 +608,6 @@
                 });
             });
         });
-        // Animate progress bars
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.progress-bar').forEach(bar => {
-                const width = bar.classList[1]?.match(/w-(\d+)/)?.[1] || 0;
-                bar.style.width = `${width}%`;
-            });
-        });
-        // Mobile menu toggle (basic placeholder)
-        document.querySelector('.md\\:hidden')?.addEventListener('click', () => {
-            alert('Mobile menu toggle not implemented yet. Use desktop nav for now.');
-        });
-        // Check resume link
-        function checkResumeLink() {
-            // You can add logic here to check if the file exists or show a message
-            return true;
-        }
     </script>
 </body>
 </html>
